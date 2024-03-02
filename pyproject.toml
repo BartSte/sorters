@@ -1,0 +1,69 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sorters"
+authors = [ {name = "BartSte"} ]
+description = "Scripts for sorting code."
+readme = "README.md"
+requires-python = ">=3.8"
+keywords = [ "python", "sorting" ]
+license = {text = "MIT License"}
+classifiers = [
+    "Programming Language :: Python :: 3",
+]
+dependencies = []
+version = "0.0.0"
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[project.scripts]
+sortvarlen = "sorters:sortvarlen"
+
+[tool.setuptools.packages.find]
+where = ["src"]  # list of folders that contain the packages (["."] by default)
+include = ["sorters"]  # package names should match these glob patterns (["*"] by default)
+
+[tool.pyright]
+include = ["sorters", "test"]
+exclude = [
+    "**/__pycache__",
+    ".git",
+    ".pytest_cache",
+]
+ignore = []
+defineConstant = {}
+stubPath = "stubs"
+
+reportMissingImports = true
+reportMissingTypeStubs = false
+
+[tool.ruff]
+line-length = 79
+
+select = [
+    "F",  # pyflakes
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "I",  # isort
+    "N",  # PEP8 naming
+    "D",  # pydocstyle
+]
+
+ignore = ["D212", "D205", "D210", "D203"]
+
+[tool.autopep8]
+max_line_length = 79
+aggressive = 3
+experimental = true
+
+[tool.pytest.ini_options]
+addopts = "-s -rA --log-level INFO"
+pythonpath = [
+    "src"
+]
+testpaths = [
+    "test"
+]
