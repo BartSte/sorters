@@ -20,7 +20,7 @@ version = "0.0.0"
 test = ["pytest"]
 
 [project.scripts]
-sortvarlen = "sorters:sortvarlen"
+lensort = "sorters.lensort:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]  # list of folders that contain the packages (["."] by default)
